@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>計算機アプリ</title>
+        <style>
+            *{
+                margin: 0px auto;padding: 15px;
+            }
+            h1{
+                text-align: center;
+                font-size: 30px;
+                color: darkgreen;
+            }
+            body{
+                border:10px double lightblue;
+                background-color: beige;
+                width: 700px;
+                height: auto;
+                padding: 16px;
+            }
+            p{
+                text-align: center;
+            }
+            a{
+                font-size: 20px;
+            }
+            div{
+                font-size: 20px;
+            }
+            input {
+                width: 200px;
+                padding: 3px;
+                font-size: 30px;
+                border: 3px solid lightsalmon;
+                text-align: right;
+            }
+
+            #cal {
+                transition: all 0.5s linear 0s;
+            }
+
+            button {
+                padding: 0px;
+                font-size: 50px;
+                width: 130px;
+                height: 70px;
+                color: lightseagreen;
+            }
+            #output {
+                border: 5px dotted lightcoral;
+                transition: all 0.5s linear 0s;
+            }
+        </style>
+    </head>
+    <body>
+        <p><a><input type="text" id="input1" placeholder="数値を入力"></a>
+        <a id="cal"></a>
+        <a><input type="text" id="input2" placeholder="して計算！"></a>
+        <div><a>=</a>
+        <a id="output">0</a></div></p>
+        <p><a id="pl"><button onclick="plus();">+</button></a>
+        <a id="mi"><button onclick="minus();">-</button></a>
+        <a id="ra"><button onclick="raise();">累乗</button></a>
+        <a><button onclick="cr();">AC</button></a></p>
+        <p><a id="ti"><button onclick="times();">×</button></a>
+        <a id="di"><button onclick="divide();">÷</button></a>
+        <a id="pe"><button onclick="percent();">剰余</button></a></p>
+        <div>
+    </div>
+        <script>
+            const input1 = document.getElementById("input1");
+            const input2 = document.getElementById("input2");
+            const cal = document.getElementById("cal");
+            const output = document.getElementById("output");
+            const pl = document.getElementById("pl");
+            const mi = document.getElementById("mi");
+            const ra = document.getElementById("ra");
+            const ti = document.getElementById("ti");
+            const di = document.getElementById("di");
+            const pe = document.getElementById("pe");
+            function plus() {
+                let total1 = Number(input1.value) + Number(input2.value);
+                let cal = document.getElementById("cal");
+                cal.innerHTML="<a>+</a>";
+                cal.style.color="red";
+                pl.style.boxShadow="10px 10px 10px gray";
+                mi.style.boxShadow="";
+                ra.style.boxShadow="";
+                ti.style.boxShadow="";
+                di.style.boxShadow="";
+                pe.style.boxShadow="";
+                output.innerHTML = total1;
+                output.style.fontSize= "50px";
+                output.style.border = "10px double red";
+            }
+            function minus() {
+                let total1 = Number(input1.value) - Number(input2.value);
+                let cal = document.getElementById("cal");
+                cal.innerHTML="<a>-</a>";
+                cal.style.color="blue";
+                mi.style.boxShadow="10px 10px 10px gray";
+                pl.style.boxShadow="";
+                ra.style.boxShadow="";
+                ti.style.boxShadow="";
+                di.style.boxShadow="";
+                pe.style.boxShadow="";
+                output.innerHTML = total1;
+                output.style.fontSize= "50px";
+                output.style.border = "10px double blue";
+            }
+            function times() {
+                let total1 = Number(input1.value) * Number(input2.value);
+                let cal = document.getElementById("cal");
+                cal.innerHTML="<a>×</a>";
+                cal.style.color="green";
+                ti.style.boxShadow="10px 10px 10px gray";
+                pl.style.boxShadow="";
+                mi.style.boxShadow="";
+                ra.style.boxShadow="";
+                di.style.boxShadow="";
+                pe.style.boxShadow="";
+                output.innerHTML = total1;
+                output.style.fontSize= "50px";
+                output.style.border = "10px double green";
+            }
+            function divide() {
+                let total1 = Number(input1.value) / Number(input2.value);
+                let cal = document.getElementById("cal");
+                cal.innerHTML="<a>÷</a>";
+                cal.style.color="gray";
+                di.style.boxShadow="10px 10px 10px gray";
+                pl.style.boxShadow="";
+                mi.style.boxShadow="";
+                ra.style.boxShadow="";
+                ti.style.boxShadow="";
+                pe.style.boxShadow="";
+                output.innerHTML = total1;
+                output.style.fontSize= "50px";
+                output.style.border = "10px double gray";
+            }
+            function raise() {
+                let total1 = Number(input1.value) ** Number(input2.value);
+                let cal = document.getElementById("cal");
+                cal.innerHTML="<a>^</a>";
+                cal.style.color="orange";
+                ra.style.boxShadow="10px 10px 10px gray";
+                pl.style.boxShadow="";
+                mi.style.boxShadow="";
+                di.style.boxShadow="";
+                ti.style.boxShadow="";
+                pe.style.boxShadow="";
+                output.innerHTML = total1;
+                output.style.fontSize= "50px";
+                output.style.border = "10px double orange";
+            }
+            function percent() {
+                let total1 = Number(input1.value) % Number(input2.value);
+                let cal = document.getElementById("cal");
+                cal.innerHTML="<a>%</a>";
+                cal.style.color="purple";
+                pe.style.boxShadow="10px 10px 10px gray";
+                pl.style.boxShadow="";
+                mi.style.boxShadow="";
+                ra.style.boxShadow="";
+                ti.style.boxShadow="";
+                di.style.boxShadow="";
+                output.innerHTML = total1;
+                output.style.fontSize= "50px";
+                output.style.border = "10px double purple";
+            }
+            function cr() {
+                let total1 = 0;
+                cal.innerHTML="<a></a>";
+                cal.style.color="black";
+                pe.style.boxShadow="";
+                pl.style.boxShadow="";
+                mi.style.boxShadow="";
+                ra.style.boxShadow="";
+                ti.style.boxShadow="";
+                di.style.boxShadow="";
+                input1.value="";
+                input2.value="";
+                output.innerHTML = total1;
+                output.style.fontSize= "20px";
+                output.style.border = "5px dotted lightcoral";
+            }
+        </script>
+    </body>
+</html>
